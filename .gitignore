@@ -1,0 +1,11 @@
+*.pyc
+*.pyo
+
+local_settings.py
+uwsgi.ini
+
+sphinx_conf/
+
+db.*
+.idea/
+.env/
