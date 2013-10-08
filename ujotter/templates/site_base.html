@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title></title>
-</head>
-<body>
+  <head>
+    <title>Ujotter - Your daily jotter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{{ STATIC_URL }}libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-</body>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="{{ STATIC_URL }}libs/bootstrap/assets/js/html5shiv.js"></script>
+      <script src="{{ STATIC_URL }}libs/bootstrap/assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ STATIC_URL }}/js/jquery-1.10.2.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ STATIC_URL }}libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
 </html>
