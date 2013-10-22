@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
-from django.views.generic import TemplateView
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 
 
-class IndexView(TemplateView):
-    template_name = "index.html"
+def index_view(request):
+    if not request.user.is_authenticated():
+        response = redirect('/login.html')
+        return response
 
-    def get_context_data(self, **kwargs):
-
-
-        context = super(IndexView, self).get_context_data(**kwargs)
-        return context
+    response =  render_to_response('index.html',
+    {},
+    context_instance=RequestContext(request))
+    return response

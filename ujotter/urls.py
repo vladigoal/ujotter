@@ -1,9 +1,9 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
-from .views import IndexView
+from .views import index_view
 
 urlpatterns = patterns('',
-    (r'^$', IndexView.as_view()),
+    (r'^$', index_view),
 )
 
 if settings.DEBUG:
