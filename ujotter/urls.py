@@ -1,9 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
-from .views import index_view
+from .views import main_view, login_view
 
 urlpatterns = patterns('',
-    (r'^$', index_view),
+    (r'^$', main_view),
+    (r'login.html', login_view),
 )
 
 if settings.DEBUG:

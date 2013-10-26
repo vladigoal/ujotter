@@ -4,7 +4,7 @@
     <div class="navbar navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header"></button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">uJotter</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -12,6 +12,14 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
+          <form class="form-signout pull-right" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="logout" value="1">
+            <input class="btn btn-small btn-primary" type="submit" value='Выйти'>
+          </form>
+          <p class="navbar-text pull-right">
+            Привет, <a href="/cabinet/profile/" class="navbar-link">{{ username }}</a> 
+          </p>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div><!-- /.navbar -->
@@ -45,7 +53,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Ujotter 2013</p>
+        <p>&copy; uJotter 2013</p>
       </footer>
 
     </div>
