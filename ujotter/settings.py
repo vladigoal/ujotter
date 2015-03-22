@@ -141,7 +141,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    #'south',
+    'south',
+    'manual'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

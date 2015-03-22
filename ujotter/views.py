@@ -3,9 +3,11 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import redirect
-
+import simplejson as json
+from manual.models import Item
+from datetime import datetime
 
 def main_view(request):
     try:
@@ -56,3 +58,24 @@ def login_view(request):
     if request.COOKIES.get('sessionid'):
         response = redirect('/')
     return response
+
+def menu_ajax_view(request):
+    data = []
+    _dict = {}
+    max_level = 0
+    items = Item.objects.all()
+    
+    for item in items:
+        for field in item._meta.fields:
+            # print field.value_from_object(item)
+            if field.name == 'date':
+                _date = str(field.value_from_object(item).date())
+                _dict[field.name] = _date
+            else:
+                if field.name == 'level' and field.value_from_object(item) > max_level:
+                    max_level = field.value_from_object(item)
+                _dict[field.name] = field.value_from_object(item)
+        data.append(_dict)
+        _dict = {}
+    
+    return HttpResponse(json.dumps({'list': data, 'max_level': max_level}))
